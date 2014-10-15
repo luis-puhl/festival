@@ -3,8 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * Employee Model
  *
- * @property user $user
- * @property employee_is_user $employee_is_user
+ * @property User $User
  */
 class Employee extends AppModel {
 
@@ -32,8 +31,18 @@ class Employee extends AppModel {
 			),
 		),
 		'payment' => array(
-			'money' => array(
-				'rule' => array('money'),
+			'numeric' => array(
+				'rule' => array('numeric'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'user_id' => array(
+			'numeric' => array(
+				'rule' => array('numeric'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -51,11 +60,11 @@ class Employee extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'employee_is_user' => array(
+		'User' => array(
 			'className' => 'User',
-			'foreignKey' => 'id',
+			'foreignKey' => 'user_id',
 			'conditions' => '',
-			'fields' => 'id',
+			'fields' => '',
 			'order' => ''
 		)
 	);

@@ -17,7 +17,7 @@ class TicketFixture extends CakeTestFixture {
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
 			'fk_ticket_event' => array('column' => 'event_id', 'unique' => 0),
-			'fk_tickets_clients1' => array('column' => 'client_id', 'unique' => 0)
+			'fk_ticket_client' => array('column' => 'client_id', 'unique' => 0)
 		),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);

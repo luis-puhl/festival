@@ -14,7 +14,6 @@ class EmployeesControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'app.employee',
-		'app.employee_is_user',
 		'app.user'
 	);
 

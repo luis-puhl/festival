@@ -14,8 +14,10 @@ class EmployeeFixture extends CakeTestFixture {
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'job' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 30, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'payment' => array('type' => 'float', 'null' => false, 'default' => null, 'unsigned' => false),
+		'user_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'indexes' => array(
-			'PRIMARY' => array('column' => 'id', 'unique' => 1)
+			'PRIMARY' => array('column' => array('id', 'user_id'), 'unique' => 1),
+			'user_id_UNIQUE' => array('column' => 'user_id', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
@@ -29,7 +31,8 @@ class EmployeeFixture extends CakeTestFixture {
 		array(
 			'id' => 1,
 			'job' => 'Lorem ipsum dolor sit amet',
-			'payment' => 1
+			'payment' => 1,
+			'user_id' => 1
 		),
 	);
 

@@ -13,7 +13,7 @@ class Ticket extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'id';
+	public $displayField = 'client_id';
 
 /**
  * Validation rules

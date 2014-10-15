@@ -14,7 +14,6 @@ class EmployeeTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'app.employee',
-		'app.employee_is_user',
 		'app.user'
 	);
 

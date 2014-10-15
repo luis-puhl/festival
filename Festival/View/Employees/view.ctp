@@ -1,9 +1,9 @@
 <div class="employees view">
 <h2><?php echo __('Employee'); ?></h2>
 	<dl>
-		<dt><?php echo __('Employee Is User'); ?></dt>
+		<dt><?php echo __('Id'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($employee['employee_is_user']['lname'], array('controller' => 'users', 'action' => 'view', $employee['employee_is_user']['id'])); ?>
+			<?php echo h($employee['Employee']['id']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Job'); ?></dt>
@@ -16,6 +16,11 @@
 			<?php echo h($employee['Employee']['payment']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('User'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($employee['User']['lname'], array('controller' => 'users', 'action' => 'view', $employee['User']['id'])); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">
@@ -26,6 +31,6 @@
 		<li><?php echo $this->Html->link(__('List Employees'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Employee'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Employee Is User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

@@ -6,17 +6,19 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('job'); ?></th>
 			<th><?php echo $this->Paginator->sort('payment'); ?></th>
+			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
 	<?php foreach ($employees as $employee): ?>
 	<tr>
-		<td>
-			<?php echo $this->Html->link($employee['employee_is_user']['lname'], array('controller' => 'users', 'action' => 'view', $employee['employee_is_user']['id'])); ?>
-		</td>
+		<td><?php echo h($employee['Employee']['id']); ?>&nbsp;</td>
 		<td><?php echo h($employee['Employee']['job']); ?>&nbsp;</td>
 		<td><?php echo h($employee['Employee']['payment']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($employee['User']['lname'], array('controller' => 'users', 'action' => 'view', $employee['User']['id'])); ?>
+		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $employee['Employee']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $employee['Employee']['id'])); ?>
@@ -45,6 +47,6 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('New Employee'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Employee Is User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

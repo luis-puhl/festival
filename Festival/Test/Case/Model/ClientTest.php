@@ -15,7 +15,11 @@ class ClientTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.client',
 		'app.user',
-		'app.ticket'
+		'app.ticket',
+		'app.event',
+		'app.stage',
+		'app.concert',
+		'app.band'
 	);
 
 /**

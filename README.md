@@ -1,4 +1,7 @@
-# festival
+Festival
+============
+
+[![Build Status](https://travis-ci.org/luis-puhl/festival.svg?branch=master)](https://travis-ci.org/luis-puhl/festival)
 
 Projeto para o trabalho final da disciplina banco de dados 2014 
 [UNESP](http://www.fc.unesp.br/) (Bauru - Brasil).
