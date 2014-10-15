@@ -1,0 +1,25 @@
+<div class="concerts form">
+<?php echo $this->Form->create('Concert'); ?>
+	<fieldset>
+		<legend><?php echo __('Edit Concert'); ?></legend>
+	<?php
+		echo $this->Form->input('id');
+		echo $this->Form->input('stage_id');
+		echo $this->Form->input('band_id');
+		echo $this->Form->input('schedule');
+	?>
+	</fieldset>
+<?php echo $this->Form->end(__('Submit')); ?>
+</div>
+<div class="actions">
+	<h3><?php echo __('Actions'); ?></h3>
+	<ul>
+
+		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Concert.id')), array(), __('Are you sure you want to delete # %s?', $this->Form->value('Concert.id'))); ?></li>
+		<li><?php echo $this->Html->link(__('List Concerts'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Stages'), array('controller' => 'stages', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Stage'), array('controller' => 'stages', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Bands'), array('controller' => 'bands', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Band'), array('controller' => 'bands', 'action' => 'add')); ?> </li>
+	</ul>
+</div>
