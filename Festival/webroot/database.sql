@@ -1,12 +1,14 @@
 --
 -- Database: `festival`
 --
+-- CREATE SCHEMA `festival` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
 
--- --------------------------------------------------------
-
+-- -------------------------------------------------------
 --
 -- Estrutura da tabela `apresentacoes`
 --
+
+use festival;
 
 CREATE TABLE IF NOT EXISTS `concerts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

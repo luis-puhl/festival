@@ -9,6 +9,8 @@
 /dist
 /tags
 *.mo
+Festival/Config/database.php
+Festival/tmp
 
 # IDE and editor specific files #
 #################################
