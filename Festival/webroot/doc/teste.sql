@@ -41,3 +41,7 @@ having avg(price) >= all (
 	)
 ;
 
+	select avg(e.price) from festival.clients c 
+		inner join festival.tickets t on t.client_id = c.id
+		inner join festival.`events` e on t.event_id = e.id
+	group by c.id;
