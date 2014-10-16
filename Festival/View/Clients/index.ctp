@@ -11,10 +11,10 @@
 	<tbody>
 	<?php foreach ($clients as $client): ?>
 	<tr>
+		<td><?php echo h($client['Client']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($client['Client_is_User']['lname'], array('controller' => 'users', 'action' => 'view', $client['Client_is_User']['id'])); ?>
+			<?php echo $this->Html->link($client['User']['name'], array('controller' => 'users', 'action' => 'view', $client['User']['id'])); ?>
 		</td>
-		<td><?php echo h($client['Client']['user_id']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $client['Client']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $client['Client']['id'])); ?>
@@ -43,7 +43,7 @@
 	<ul>
 		<li><?php echo $this->Html->link(__('New Client'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Client Is  User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Tickets'), array('controller' => 'tickets', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Ticket'), array('controller' => 'tickets', 'action' => 'add')); ?> </li>
 	</ul>

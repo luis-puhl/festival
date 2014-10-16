@@ -56,8 +56,8 @@ class ClientsController extends AppController {
 				$this->Session->setFlash(__('The client could not be saved. Please, try again.'));
 			}
 		}
-		$clientIsUsers = $this->Client->ClientIsUser->find('list');
-		$this->set(compact('clientIsUsers'));
+		$users = $this->Client->User->find('list');
+		$this->set(compact('users'));
 	}
 
 /**

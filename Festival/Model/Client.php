@@ -8,12 +8,17 @@ App::uses('AppModel', 'Model');
  */
 class Client extends AppModel {
 
+	public $virtualFields = array(
+		'name' => "CONCAT(User.fname, ' ', User.lname)"
+	);
+
+
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'id';
+	public $displayField = 'name';
 
 /**
  * Validation rules

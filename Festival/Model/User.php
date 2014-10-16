@@ -11,7 +11,10 @@ class User extends AppModel {
  *
  * @var string
  */
-	public $displayField = 'lname';
+	public $virtualFields = array(
+		'name' => "CONCAT(fname, ' ', lname)"
+	);
+	public $displayField = 'name';
 
 /**
  * Validation rules
@@ -80,4 +83,17 @@ class User extends AppModel {
 			),
 		),
 	);
+	
+	public beforeFind(array $query){
+		$options['joins'] = array(
+		array('table' => 'channels',
+			'alias' => 'Channel',
+			'type' => 'LEFT',
+			'conditions' => array(
+				'Channel.id = Item.channel_id',
+			)
+		)
+		);
+	}
+	
 }
