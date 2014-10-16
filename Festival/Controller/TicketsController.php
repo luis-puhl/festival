@@ -57,6 +57,8 @@ class TicketsController extends AppController {
 			}
 		}
 		$clients = $this->Ticket->Client->find('list');
+		//~ $clients = $this->Ticket->Client->humanList();
+		
 		$events = $this->Ticket->Event->find('list');
 		$this->set(compact('clients', 'events'));
 	}

@@ -8,17 +8,12 @@ App::uses('AppModel', 'Model');
  */
 class Client extends AppModel {
 
-	public $virtualFields = array(
-		'name' => "CONCAT(User.fname, ' ', User.lname)"
-	);
-
-
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'name';
+	public $displayField = 'id';
 
 /**
  * Validation rules
@@ -75,5 +70,14 @@ class Client extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-
+	
+	//~ public function humanList(){
+		//~ $data = $this->query('SELECT `Client`.`id`, User.fname as name FROM `festival`.`clients` AS `Client` JOIN `festival`.`users` User ON Client.user_id = User.id WHERE 1 = 1');
+		//~ 
+		//~ $this->log($data);
+		//~ 
+		//~ return $data;
+		//~ 
+	//~ }
+	
 }
