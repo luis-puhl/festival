@@ -84,4 +84,30 @@ class User extends AppModel {
 		),
 	);
 	
+	public function beforeSave($options = array()) {
+		if (isset($this->data[$this->alias]['password'])) {
+			$passwordHasher = new BlowfishPasswordHasher();
+			$this->data[$this->alias]['password'] = $passwordHasher->hash(
+				$this->data[$this->alias]['password']
+			);
+		}
+		return true;
+	}
+	
+	public function afterFind($results, $primary = false) {
+		$results = $this->recursiveCleanPass($results);
+		return $results;
+	}
+	
+	private function recursiveCleanPass($results){
+		foreach($results as $key => $value){
+			if (is_array($value)){
+				$results[$key] = $this->recursiveCleanPass($value);
+			} else if ($key === 'password'){
+				$results[$key] = '';
+			}
+		}
+		return $results;
+	}
+	
 }

@@ -15,6 +15,12 @@ class TicketsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator', 'Session');
+	public $uses = array('Ticket', 'User', 'Client');
+
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('add');
+	}
 
 /**
  * index method
@@ -58,7 +64,13 @@ class TicketsController extends AppController {
 	public function buy() {
 		if ($this->request->is('post')) {
 			$this->Ticket->create();
-			if ($this->Ticket->save($this->request->data)) {
+			
+			$data = $this->request->data;
+			
+			$cli = $this->Client->findByUserId($this->Auth->user('id'));
+			$data['Ticket']['client_id'] = $cli['Client']['id'];
+			
+			if ($this->Ticket->save($data)) {
 				$this->Session->setFlash(__('The ticket has been saved.'));
 				return $this->redirect(array('action' => 'index'));
 			} else {
@@ -66,7 +78,6 @@ class TicketsController extends AppController {
 			}
 		}
 		//~ $clients = $this->Ticket->Client->find('list');
-		//~ $clients = $this->Ticket->Client->humanList();
 		
 		$events = $this->Ticket->Event->find('upcomingList');
 		$this->set(compact('events'));

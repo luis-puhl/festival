@@ -11,6 +11,7 @@
  */
 
 App::uses('Controller', 'Controller');
+App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 
 /**
  * Application Controller
@@ -22,5 +23,33 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-	public $components = array('DebugKit.Toolbar');
+	public $components = array(
+		'DebugKit.Toolbar',
+		'Session',
+		'Auth' => array(
+			'loginRedirect' => array(
+				'controller' => 'events',
+				'action' => 'index'
+			),
+			'logoutRedirect' => array(
+					'controller' => 'pages',
+					'action' => 'display',
+					'home'
+			),
+			'authenticate' => array(
+				'Form' => array(
+					'passwordHasher' => 'Blowfish'
+				)
+			)
+		),
+	);
+	
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow('index', 'view');
+	}
+	
+	public function beforeRender() {
+		// $this->assign('title', $this->request->controller . ' - ' . $this->request->action);
+	}
 }
