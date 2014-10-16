@@ -18,7 +18,7 @@
 		</dd>
 		<dt><?php echo __('User'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($employee['User']['lname'], array('controller' => 'users', 'action' => 'view', $employee['User']['id'])); ?>
+			<?php echo $this->Html->link($employee['User']['name'], array('controller' => 'users', 'action' => 'view', $employee['User']['id'])); ?>
 			&nbsp;
 		</dd>
 	</dl>

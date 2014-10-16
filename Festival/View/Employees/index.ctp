@@ -17,7 +17,7 @@
 		<td><?php echo h($employee['Employee']['job']); ?>&nbsp;</td>
 		<td><?php echo h($employee['Employee']['payment']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($employee['User']['lname'], array('controller' => 'users', 'action' => 'view', $employee['User']['id'])); ?>
+			<?php echo $this->Html->link($employee['User']['name'], array('controller' => 'users', 'action' => 'view', $employee['User']['id'])); ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $employee['Employee']['id'])); ?>
