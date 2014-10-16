@@ -47,6 +47,15 @@ class TicketsController extends AppController {
  * @return void
  */
 	public function add() {
+		return $this->redirect(array('action' => 'buy'));
+	}
+	
+	/**
+	 * buy method
+	 *
+	 * @return void
+	 */
+	public function buy() {
 		if ($this->request->is('post')) {
 			$this->Ticket->create();
 			if ($this->Ticket->save($this->request->data)) {
@@ -56,11 +65,11 @@ class TicketsController extends AppController {
 				$this->Session->setFlash(__('The ticket could not be saved. Please, try again.'));
 			}
 		}
-		$clients = $this->Ticket->Client->find('list');
+		//~ $clients = $this->Ticket->Client->find('list');
 		//~ $clients = $this->Ticket->Client->humanList();
 		
-		$events = $this->Ticket->Event->find('list');
-		$this->set(compact('clients', 'events'));
+		$events = $this->Ticket->Event->find('upcomingList');
+		$this->set(compact('events'));
 	}
 
 /**

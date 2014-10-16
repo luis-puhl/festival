@@ -7,12 +7,19 @@ App::uses('AppModel', 'Model');
  */
 class Event extends AppModel {
 
+	public $virtualFields = array(
+		'event_name' => 'CONCAT(Event.city, " - ", Event.location, " - ", Event.event_date)'
+	);
+
+
+
+
 /**
  * Display field
  *
  * @var string
  */
-	public $displayField = 'city';
+	public $displayField = 'event_name';
 
 /**
  * Validation rules
@@ -102,5 +109,38 @@ class Event extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+	
+	
+	public $findMethods = array(
+		'upcoming' =>  true,
+		'upcomingList' =>  true,
+	);
+	
+	public function _findUpcoming($state, $query, $results = array()) {
+		if ($state === 'before') {
+			$query['conditions']['Event.event_date >= '] = date("Y-m-d");
+			return $query;
+		}
+		return $results;
+	}
+	
+	public function _findUpcomingList($state, $query, $results = array()) {
+		if ($state === 'before') {
+			$query['recursive'] = 0;
+			$query['fields'] = array('Event.id', 'Event.event_name');
+			$query['conditions']['Event.event_date >= '] = date("Y-m-d");
+			return $query;
+		}
+		if ($state === 'after') {
+			$comp = array();
+			foreach ($results as $result){
+				foreach ($result as $event){
+					$comp[$event['id']] = $event['event_name'];
+				}
+			}
+			return $comp;
+		}
+		return $results;
+	}
 
 }

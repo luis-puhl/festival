@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS `festival`.`events` (
   `address` VARCHAR(60) NOT NULL,
   `price` FLOAT NOT NULL,
   `capacity` INT(11) NOT NULL,
+  `event_date` DATE NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;

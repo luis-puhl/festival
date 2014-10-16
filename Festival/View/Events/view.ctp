@@ -31,6 +31,11 @@
 			<?php echo h($event['Event']['capacity']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Event Date'); ?></dt>
+		<dd>
+			<?php echo h($event['Event']['event_date']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">
@@ -42,6 +47,7 @@
 		<li><?php echo $this->Html->link(__('New Event'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Stages'), array('controller' => 'stages', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Stage'), array('controller' => 'stages', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Buy Ticket'), array('controller' => 'tickets', 'action' => 'buy', $event['Event']['id'])); ?> </li>
 	</ul>
 </div>
 <div class="related">

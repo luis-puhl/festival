@@ -8,6 +8,7 @@
 		echo $this->Form->input('address');
 		echo $this->Form->input('price');
 		echo $this->Form->input('capacity');
+		echo $this->Form->input('event_date');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

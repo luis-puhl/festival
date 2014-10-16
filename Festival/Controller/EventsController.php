@@ -26,6 +26,16 @@ class EventsController extends AppController {
 		$this->set('events', $this->Paginator->paginate());
 	}
 
+	public function upcoming() {
+		$this->paginate = array('upcoming');
+		//~ $events = $this->Event->find('upcoming');
+		$events = $this->paginate();
+		$this->set(compact('events'));
+		
+		//~ $this->Event->recursive = 0;
+		//~ $this->set('events', $this->Paginator->paginate());
+	}
+	
 /**
  * view method
  *
